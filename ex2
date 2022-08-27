@@ -1,0 +1,99 @@
+# from sympy import Symbol, Function, Derivative, Eq, dsolve, solve
+# a = int(input("a = "))
+# b = int(input("b = "))
+# c = int(input("c = "))
+# d = int(input("d = "))
+# r0 = int(input("r0 = "))
+# j0 = int(input("j0 = "))
+a=b=c=d=r0=j0=1
+t = Symbol('t')
+r = Function('r')(t)
+j = Function('j')(t)
+deq1 = Eq(Derivative(r), a*r + b*j)
+deq2 = Eq (Derivative(j), c*r + d*j)
+system = (deq1, deq2)
+s = dsolve(system)
+eq1 = s[0].rhs.subs(t,0) - r0
+eq2 = s[1].rhs.subs(t,0) - j0
+constants = solve([eq1, eq2])
+r = s[0].subs(constants)
+j = s[1].subs(constants)
+r = r.rhs
+j = j.rhs
+print(r)
+print(j)
+print(type(r))
+
+##################################################
+# from scipy.integrate import odeint
+# import numpy as np
+# import matplotlib.pyplot as plt
+
+# t = np.linspace(0,20,50)
+# r=2*t
+# plt.plot(t,r, 'b-', linewidth = 1.0)
+# #plt.plot(t,j,'r-', linewidth=1.0)
+
+# plt.show()
+
+
+
+
+
+# def love(t):
+#     dR = a*r0+b*j0
+#     dJ = c*r0+d*j0
+#     return [dR ,dJ]
+
+# t = np.linspace(0,20,50)
+# res = odeint(love,[r0,j0],t)
+
+# plt.plot(t,y[:,0], 'b-', linewidth = 1.0)
+# plt.plot(t,y[:,1],'r-', linewidth=1.0)
+# plt.xlabel("time")
+
+# plt.title("love between Romeo and Juliet")
+# plt.legend(["Romeo","Juliet"])
+# plt.show()
+
+# y1 = np.linspace(-10, 10, 20)
+# y2 = np.linspace(-10, 10, 20)
+
+# Y1, Y2 = np.meshgrid(y1, y2)
+
+# t = 0
+
+# u, v = np.zeros(Y1.shape), np.zeros(Y2.shape)
+
+# NI, NJ = Y1.shape
+
+# for i in range(NI):
+#     for j in range(NJ):
+#         x = Y1[i, j]
+#         y = Y2[i, j]
+#         yprime = love([x, y], t)
+#         u[i,j] = yprime[0]
+#         v[i,j] = yprime[1]
+     
+
+# Q = plt.quiver(Y1, Y2, u, v, color='r')
+
+# plt.xlabel('Romeo\'s love for Juliet')
+# plt.ylabel('Juliet\'s love for Romeo')
+# plt.xlim([-10, 10])
+# plt.ylim([-10, 10])
+
+
+# for y20 in [0, 0.01, 0.02, -0.01, -0.02]:
+#     tspan = np.linspace(0, 50, 200)
+#     y0 = [0, y20]
+#     ys = odeint(love, y0, tspan)
+#     plt.plot(ys[:,0], ys[:,1], 'b-') # path
+#     plt.plot([ys[0,0]], [ys[0,1]], 'o') # start
+#     plt.plot([ys[-1,0]], [ys[-1,1]], 's') # end
+    
+
+# plt.show()
+
+
+
