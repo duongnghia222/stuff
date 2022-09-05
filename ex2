@@ -5,6 +5,7 @@
 # d = int(input("d = "))
 # r0 = int(input("r0 = "))
 # j0 = int(input("j0 = "))
+
 a=b=c=d=r0=j0=1
 t = Symbol('t')
 r = Function('r')(t)
