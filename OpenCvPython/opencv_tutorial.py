@@ -125,6 +125,7 @@ print("hi")
 #     cv2.waitKey(1)
 
 
+
 # shape detection
 def getContours(img):
     contours, hierarchy = cv2.findContours(img,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
